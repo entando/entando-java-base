@@ -15,7 +15,7 @@
 #
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.4-200
-ARG JAVA_PACKAGE=java-11-openjdk-headless
+ARG JAVA_PACKAGE=java-11-openjdk-headless-1:11.0.16.0.8-1.el8_6.x86_64
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
 # Install java and the run-java script
