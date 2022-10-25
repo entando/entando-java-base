@@ -31,5 +31,6 @@ RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
     && echo "securerandom.source=file:/dev/urandom" >> /etc/alternatives/jre/lib/security/java.security
 # Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
 ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
+RUN useradd -u 1001 -r -g 0 -d /deployments -s /sbin/nologin -c "Default Application User" java-run
 USER 1001
 ENTRYPOINT [ "/deployments/run-java.sh" ]
