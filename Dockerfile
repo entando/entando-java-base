@@ -14,15 +14,15 @@
 # docker run -i --rm -p 8080:8080 quarkus/rest-json-jvm
 #
 ###
-FROM registry.access.redhat.com/ubi8/ubi-minimal:8.6
-ARG JAVA_PACKAGE=java-11-openjdk-headless-1:11.0.17.0.8-2.el8_6.x86_64
+FROM registry.access.redhat.com/ubi8/ubi-minimal:8.7-1107
+ARG JAVA_PACKAGE=java-17-openjdk-headless-1:17.0.6.0.10-3.el8_7.x86_64
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' \
     HOME=/deployments
 # Install java and the run-java script
 # Also set up permissions for user `1001`
-RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
-    && microdnf update \
+RUN microdnf update \
+    && microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
     && microdnf clean all \
     && mkdir /deployments \
     && chmod ug+rwX /deployments \
