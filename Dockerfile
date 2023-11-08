@@ -21,9 +21,9 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' \
     HOME=/deployments
 # Install java and the run-java script
 # Also set up permissions for user `1001`
-RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
-    && microdnf update \
-    && microdnf clean all \
+RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} 
+RUN microdnf update 
+RUN microdnf clean all \
     && mkdir /deployments \
     && chmod ug+rwX /deployments \
     && curl https://repo1.maven.org/maven2/io/fabric8/run-java-sh/${RUN_JAVA_VERSION}/run-java-sh-${RUN_JAVA_VERSION}-sh.sh -o /deployments/run-java.sh \
