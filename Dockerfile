@@ -15,7 +15,7 @@
 #
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.6
-ARG JAVA_PACKAGE=java-11-openjdk-headless-1:11.0.17.0.8-2.el8_6.x86_64
+ARG JAVA_PACKAGE=java-11-openjdk-headless-1:11.0.20.0.8-3.el8.x86_64
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' \
     HOME=/deployments
