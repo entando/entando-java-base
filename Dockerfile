@@ -15,15 +15,15 @@
 #
 ###
 FROM registry.access.redhat.com/ubi8/ubi-minimal:8.6
-ARG JAVA_PACKAGE=java-11-openjdk-headless
+ARG JAVA_PACKAGE=java-11-openjdk-headless-1:11.0.21.0.9-2.el8.x86_64 
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' \
     HOME=/deployments
 # Install java and the run-java script
 # Also set up permissions for user `1001`
-RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} 
-RUN microdnf update 
-RUN microdnf clean all \
+RUN microdnf install openssl curl ca-certificates ${JAVA_PACKAGE} \
+    && microdnf update \
+    && microdnf clean all \
     && mkdir /deployments \
     && chmod ug+rwX /deployments \
     && curl https://repo1.maven.org/maven2/io/fabric8/run-java-sh/${RUN_JAVA_VERSION}/run-java-sh-${RUN_JAVA_VERSION}-sh.sh -o /deployments/run-java.sh \
